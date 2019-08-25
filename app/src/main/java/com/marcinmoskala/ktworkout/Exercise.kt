@@ -17,11 +17,10 @@ data class Exercise(
 val warmup = listOf(
     Exercise("jumping_jacks", R.drawable.jumping_jacks, "Jumping jacks"),
     Exercise("chest_expanders", R.drawable.chest_expander, "Chest expanders"),
-    Exercise("rotating_toe_touches", R.drawable.rotating_toe_touches, "Rotating Toe Touches"),
-    Exercise("hips_rotation", R.drawable.hips_rotation, "Hips rotation", time = 20, sides = listOf("clockwise", "counter clockwise")),
-    Exercise("forward_bend", R.drawable.forward_bend, "Dynamic forward bend"),
-    Exercise("wrist", R.drawable.wrist_warm_up, "Wrist warm up"),
-    Exercise("wall_push_up", R.drawable.wall_push_ups, "Wall push ups", prepareTime = 8)
+    Exercise("forward_bend", R.drawable.forward_bend, "Dynamic forward bend", time = 20),
+    Exercise("rotating_toe_touches", R.drawable.rotating_toe_touches, "Rotating Toe Touches", time = 20),
+    Exercise("hips_rotation", R.drawable.hips_rotation, "Hips rotation", time = 20, switchSidesTime = 0, sides = listOf("clockwise", "counter clockwise")),
+    Exercise("wrist", R.drawable.wrist_warm_up, "Wrist warm up")
 )
 
 val exercises = listOf(
@@ -32,15 +31,18 @@ val exercises = listOf(
     Exercise("handstand", R.drawable.handstand, "Handstand", prepareTime = 8),
     Exercise("bridge", R.drawable.bridge, "Bridge", prepareTime = 10),
 //    Exercise("bridge_full", R.drawable.bridge, "Full bridge", prepareTime = 5),
-    Exercise("plank", R.drawable.plank, "Plank")
+    Exercise("plank", R.drawable.plank, "Plank", prepareTime = 8)
 )
 
 val randomStretch = listOf(
     Exercise("chest_stretch", R.drawable.chest_stretch, "Chest Stretch", sides = listOf("right", "left")),
     Exercise("shoulder_streatch", R.drawable.shoulder_stretch, "Shoulder Stretch", sides = listOf("right", "left")),
     Exercise("triceps_stretch", R.drawable.triceps_stretch, "Triceps Stretch", sides = listOf("right", "left")),
-    Exercise("leg_standing_stretch", R.drawable.legstretch, "Leg stretch while standing", sides = listOf("right", "left"), prepareTime = 8)
-).shuffled().take(2).toTypedArray()
+    Exercise("leg_standing_stretch", R.drawable.legstretch, "Leg stretch while standing", sides = listOf("right", "left"), prepareTime = 8),
+    Exercise("obliques_stretches", R.drawable.obliques_stretches, "Obliques stretches", sides = listOf("right", "left"), prepareTime = 3),
+    Exercise("lower_back", R.drawable.lowerback, "Lower Back Stretch", sides = listOf("right", "left")),
+    Exercise("windshield_wipers", R.drawable.windshield_wipers, "Windshield Wipers", sides = listOf("right", "left"))
+).shuffled().take(4).toTypedArray()
 
 val stretch = listOf(
     Exercise("forward_bend", R.drawable.forward_bend, "Forward bend"),
@@ -50,7 +52,5 @@ val stretch = listOf(
     *randomStretch,
     Exercise("upper_trap_stretch", R.drawable.upper_trap_stretch, "Upper Trap Stretch", sides = listOf("right", "left")),
     Exercise("back_stretch", R.drawable.back_stretch, "Back Stretch", sides = listOf("front", "right", "left"))
-//    Exercise("lower_back", R.drawable.lowerback, "Lower Back Stretch", sides = listOf("right", "left")),
-//    Exercise("windshield_wipers", R.drawable.windshield_wipers, "Windshield Wipers", sides = listOf("right", "left"))
 )
 
