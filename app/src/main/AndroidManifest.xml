@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.marcinmoskala.ktworkout.IntroActivity"
+            android:name="com.marcinmoskala.ktworkout.view.IntroActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

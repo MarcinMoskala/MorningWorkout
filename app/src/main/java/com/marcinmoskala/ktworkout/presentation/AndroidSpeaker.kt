@@ -42,7 +42,7 @@ class AndroidSpeaker(context: Context): Speaker {
         endSound.start()
     }
 
-    fun release() {
+    override fun release() {
         whistle.release()
         endSound.release()
     }

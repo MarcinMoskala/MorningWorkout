@@ -1,21 +1,20 @@
 package com.marcinmoskala.ktworkout.presentation
 
-import android.app.*
 import android.arch.lifecycle.*
 import android.databinding.*
 import com.marcinmoskala.ktworkout.*
 import com.marcinmoskala.ktworkout.R
 
 class WorkoutViewModel(
-    app: Application,
-    val exercises: List<Exercise>,
+    private val exercises: List<Exercise>,
     private val timer: Timer,
     private val speaker: Speaker
-) : AndroidViewModel(app) {
-    val title = ObservableField<String>("")
-    val timeDisplay = ObservableField<String>("")
-    val exercisesCounterDisplay = ObservableField<String>("")
-    val minutesLeftDisplay = ObservableField<String>("")
+) : ViewModel() {
+
+    val title = ObservableField("")
+    val timeDisplay = ObservableField("")
+    val exercisesCounterDisplay = ObservableField("")
+    val minutesLeftDisplay = ObservableField("")
     val progressBarPercentage = ObservableInt(0)
     val progressVisible = ObservableBoolean()
     val image = ObservableInt()
@@ -24,7 +23,7 @@ class WorkoutViewModel(
     private var state: State = states.first()
 
     fun onStart() {
-        showState(state)
+        showState()
     }
 
     fun onResume() {
@@ -40,7 +39,7 @@ class WorkoutViewModel(
         if (position < states.size) {
             state = states[position + 1]
         }
-        showState(state)
+        showState()
     }
 
     fun onPrevious() {
@@ -48,51 +47,49 @@ class WorkoutViewModel(
         if (position > 0) {
             state = states[position - 1]
         }
-        showState(state)
+        showState()
     }
 
-    private fun showState(state: State) {
-        setUpTimer(state.time)
-
-        val titleText = when (state) {
-            is DoneState -> "Done"
-            is ExerciseState -> state.exercise.nameText
-            is PrepareState -> "Prepare for " + state.exercise.nameText
+    private fun showState() {
+        val titleText: String
+        when (val state = state) {
+            is PrepareState -> {
+                speaker.playWhistle()
+                titleText = "Prepare for " + state.exercise.nameText
+                setExercisesCountDisplay(state.index)
+                image.set(state.exercise.imgId)
+            }
+            is ExerciseState -> {
+                speaker.playWhistle()
+                titleText = state.exercise.nameText
+                setExercisesCountDisplay(state.index)
+                image.set(state.exercise.imgId)
+            }
+            is DoneState -> {
+                speaker.playEndSound()
+                titleText = "Done"
+                setExercisesCountDisplay(null)
+                image.set(R.drawable.done)
+            }
         }
         title.set(titleText)
         speaker.speak(titleText)
+        setUpTimer(state.time)
+    }
 
-        val exerciseIndex = when (state) {
-            is DoneState -> null
-            is ExerciseState -> state.index
-            is PrepareState -> state.index
-        }
-        val exerciseCountText = exerciseIndex?.let { "${it + 1}/${exercises.size}" } ?: ""
-        exercisesCounterDisplay.set(exerciseCountText)
-
-        if (state !is DoneState) {
-            speaker.playWhistle()
-        } else {
-            speaker.playEndSound()
-        }
-
-        val imageResource = when (state) {
-            is DoneState -> R.drawable.done
-            is ExerciseState -> state.exercise.imgId
-            is PrepareState -> state.exercise.imgId
-        }
-        image.set(imageResource)
-
-        progressVisible.set(state !is DoneState)
-        progressBarPercentage.set(0)
+    private fun setExercisesCountDisplay(index: Int?) {
+        val text = if (index == null) "" else "${index + 1}/${exercises.size}"
+        exercisesCounterDisplay.set(text)
     }
 
     private fun setUpTimer(durationSeconds: Int?) {
-        if(durationSeconds == null) {
+        progressVisible.set(durationSeconds == null)
+        if (durationSeconds == null) {
             timeDisplay.set("")
             return
         }
         timeDisplay.set("$durationSeconds")
+        progressBarPercentage.set(0)
         val otherTimeToEnd = calculateTimeLeftInOtherExercises()
         fun wholeTimeLeftInMinutes() = (otherTimeToEnd + durationSeconds) / 60
         minutesLeftDisplay.set("${wholeTimeLeftInMinutes()}")

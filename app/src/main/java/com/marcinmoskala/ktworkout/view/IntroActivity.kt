@@ -1,4 +1,4 @@
-package com.marcinmoskala.ktworkout
+package com.marcinmoskala.ktworkout.view
 
 import android.os.Bundle
 import android.preference.PreferenceManager

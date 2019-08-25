@@ -7,24 +7,22 @@ import android.support.v4.app.*
 import android.view.*
 import com.marcinmoskala.ktworkout.*
 import com.marcinmoskala.ktworkout.presentation.*
+import org.koin.android.ext.android.*
+import org.koin.core.parameter.*
 
 class WorkoutFragment : Fragment() {
-
-    val speaker by lazy { (activity!!.application as App).speaker }
-
-    private val viewModel by lazy {
-        WorkoutViewModel(activity!!.application,
-            exercises = arguments?.getParcelableArrayList<Exercise>(ARG_EXERCISES).orEmpty(),
-            timer = AndroidTimer(),
-            speaker = speaker
-        )
-    }
+    private val speaker by inject<Speaker>()
+    private val exercises by lazy { arguments?.getParcelableArrayList<Exercise>(ARG_EXERCISES).orEmpty() }
+    private val viewModel by inject<WorkoutViewModel> { parametersOf(exercises) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         DataBindingUtil.setContentView<ViewDataBinding>(activity!!, R.layout.fragment_workout)
             .apply { setVariable(BR.vm, viewModel) }
-        viewModel.onStart()
+
+        if (savedInstanceState == null) {
+            viewModel.onStart()
+        }
     }
 
     override fun onResume() {
