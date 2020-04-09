@@ -90,18 +90,22 @@ class WorkoutViewModel(
         }
         timeDisplay.set("$durationSeconds")
         progressBarPercentage.set(0)
-        val otherTimeToEnd = calculateTimeLeftInOtherExercises()
-        fun wholeTimeLeftInMinutes() = (otherTimeToEnd + durationSeconds) / 60
-        minutesLeftDisplay.set("${wholeTimeLeftInMinutes()}")
+        minutesLeftDisplay.set(wholeTimeLeftDisplay(durationSeconds))
         timer.start(durationSeconds,
             onTick = { secondsUntilFinished ->
                 val seconds = durationSeconds - secondsUntilFinished
                 progressBarPercentage.set(seconds * 100 / durationSeconds)
                 timeDisplay.set("$secondsUntilFinished")
-                minutesLeftDisplay.set("${wholeTimeLeftInMinutes()}")
+                minutesLeftDisplay.set(wholeTimeLeftDisplay(secondsUntilFinished))
             },
             onFinish = this::onNext
         )
+    }
+
+    private fun wholeTimeLeftDisplay(durationSeconds: Int): String {
+        val otherTimeToEnd = calculateTimeLeftInOtherExercises()
+        val allSec = otherTimeToEnd + durationSeconds
+        return allSec.displayTime()
     }
 
     private fun calculateTimeLeftInOtherExercises() = states
@@ -126,7 +130,10 @@ class WorkoutViewModel(
     }
 
     private fun IndexedValue<Exercise>.toStates() =
-        listOf(PrepareState(index, value), ExerciseState(index, value))
+        listOfNotNull(
+            PrepareState(index, value).takeUnless { value.prepareTime <= 0 },
+            ExerciseState(index, value).takeUnless { value.time <= 0 }
+        )
 }
 
 private sealed class State {
@@ -145,4 +152,12 @@ private class ExerciseState(val index: Int, val exercise: Exercise) : State() {
 private class PrepareState(val index: Int, val exercise: Exercise) : State() {
     override val time: Int?
         get() = exercise.prepareTime
+}
+
+fun Int.displayTime(): String {
+    val minutes: Int = this / 60
+    val sec: Int = this % 60
+    val minutesDisplay = minutes.toString().padStart(2, '0')
+    val secDisplay = sec.toString().padStart(2, '0')
+    return "$minutesDisplay:$secDisplay"
 }

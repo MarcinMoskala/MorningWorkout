@@ -4,15 +4,15 @@
     package="com.marcinmoskala.ktworkout">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name="com.marcinmoskala.ktworkout.App"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name="com.marcinmoskala.ktworkout.view.WorkoutActivity"
+            android:name=".view.WorkoutActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.marcinmoskala.ktworkout.view.IntroActivity"
+            android:name=".view.WorkoutSelectionActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".view.IntroActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

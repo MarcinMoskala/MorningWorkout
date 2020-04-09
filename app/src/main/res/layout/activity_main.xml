@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:keepScreenOn="true"
-    tools:context=".view.WorkoutActivity">
+    tools:context=".view.WorkoutSelectionActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -55,10 +55,10 @@
             style="@style/ButtonStyle"
             android:text="Exercises" />
 
-        <TextView
-            android:id="@+id/stretchButton"
-            style="@style/ButtonStyle"
-            android:text="Stretch" />
+<!--        <TextView-->
+<!--            android:id="@+id/stretchButton"-->
+<!--            style="@style/ButtonStyle"-->
+<!--            android:text="Stretch" />-->
 
     </LinearLayout>
 

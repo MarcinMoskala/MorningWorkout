@@ -19,7 +19,7 @@ class WorkoutViewModelTest {
         val exercise = someExercise.copy(nameText = exerciseName, time = 4, prepareTime = 2)
         val timer = FakeTimer()
         val speaker: Speaker = mockk(relaxed = true)
-        val vm = WorkoutViewModel(mockk(), listOf(exercise), timer, speaker)
+        val vm = WorkoutViewModel(listOf(exercise), timer, speaker)
 
         vm.onStart() // Now we should be at the break before exercise
         assertEquals("Prepare for Name", vm.title.get())
@@ -98,7 +98,7 @@ class WorkoutViewModelTest {
         val exercise = someExercise.copy(nameText = exerciseName, sides = listOf("A", "B", "C"), switchSidesTime = 333)
         val timer = FakeTimer()
         val speaker: Speaker = mockk(relaxed = true)
-        val vm = WorkoutViewModel(mockk(), listOf(exercise), timer, speaker)
+        val vm = WorkoutViewModel(listOf(exercise), timer, speaker)
 
         vm.onStart()
         assertEquals("Prepare for Name A", vm.title.get())
@@ -129,7 +129,7 @@ class WorkoutViewModelTest {
         val exercise4 = someExercise.copy(nameText = "E4")
         val timer = FakeTimer()
         val speaker: Speaker = mockk(relaxed = true)
-        val vm = WorkoutViewModel(mockk(), listOf(exercise, exercise2, exercise3, exercise4), timer, speaker)
+        val vm = WorkoutViewModel(listOf(exercise, exercise2, exercise3, exercise4), timer, speaker)
 
         vm.onStart()
         assertEquals("1/4", vm.exercisesCounterDisplay.get())
@@ -169,7 +169,7 @@ class WorkoutViewModelTest {
         val exercise2 = someExercise.copy(nameText = "E2")
         val timer = FakeTimer()
         val speaker: Speaker = mockk(relaxed = true)
-        val vm = WorkoutViewModel(mockk(), listOf(exercise, exercise2), timer, speaker)
+        val vm = WorkoutViewModel(listOf(exercise, exercise2), timer, speaker)
 
         vm.onStart()
         assertTrue("A" in vm.title.get().orEmpty())
