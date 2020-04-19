@@ -9,11 +9,8 @@ import org.koin.dsl.module.*
 import kotlin.collections.get
 
 class App : Application() {
-    val speaker by lazy { AndroidSpeaker(this) }
-
     override fun onCreate() {
         super.onCreate()
-        speaker // To initialize once app is open
         val androidModule = module {
             single<Timer> { AndroidTimer() }
             single<Speaker> { AndroidSpeaker(get()) }

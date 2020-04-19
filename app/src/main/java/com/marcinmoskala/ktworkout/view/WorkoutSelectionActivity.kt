@@ -1,5 +1,6 @@
 package com.marcinmoskala.ktworkout.view
 
+import android.annotation.*
 import android.content.pm.*
 import android.os.*
 import android.preference.*
@@ -10,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class WorkoutSelectionActivity: AppCompatActivity() {
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT

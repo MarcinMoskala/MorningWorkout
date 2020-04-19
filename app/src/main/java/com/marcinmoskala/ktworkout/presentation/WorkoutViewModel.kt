@@ -22,11 +22,8 @@ class WorkoutViewModel(
     private val states: List<State> = exercises.withIndex().flatMap(::toSeries) + DoneState
     private var state: State = states.first()
 
-    fun onStart() {
-        showState()
-    }
-
     fun onResume() {
+        showState()
         timer.start()
     }
 
@@ -35,9 +32,10 @@ class WorkoutViewModel(
     }
 
     fun onNext() {
-        val position = states.indexOf(state)
-        if (position < states.size) {
-            state = states[position + 1]
+        state = if (state is DoneState || state == states.last()) {
+            states.first()
+        } else {
+            states[states.indexOf(state) + 1]
         }
         showState()
     }
@@ -85,6 +83,7 @@ class WorkoutViewModel(
     private fun setUpTimer(durationSeconds: Int?) {
         progressVisible.set(durationSeconds == null)
         if (durationSeconds == null) {
+            timer.stop()
             timeDisplay.set("")
             return
         }

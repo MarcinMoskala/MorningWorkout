@@ -7,6 +7,7 @@ import android.support.v7.app.*
 import com.marcinmoskala.ktworkout.*
 import com.marcinmoskala.ktworkout.presentation.*
 import org.koin.android.ext.android.*
+import org.koin.android.viewmodel.ext.android.*
 import org.koin.core.parameter.*
 
 class WorkoutActivity : AppCompatActivity() {
@@ -15,7 +16,7 @@ class WorkoutActivity : AppCompatActivity() {
     private val exercises by lazy {
         intent.extras?.getParcelableArrayList(ARG_EXERCISES) ?: randomExercises
     }
-    private val viewModel by inject<WorkoutViewModel> { parametersOf(exercises) }
+    private val viewModel by viewModel<WorkoutViewModel> { parametersOf(exercises) }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,10 +24,6 @@ class WorkoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_workout)
         DataBindingUtil.setContentView<ViewDataBinding>(this, R.layout.activity_workout)
             .apply { setVariable(BR.vm, viewModel) }
-
-        if (savedInstanceState == null) {
-            viewModel.onStart()
-        }
     }
 
     override fun onResume() {

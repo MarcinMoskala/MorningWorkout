@@ -1,37 +1,22 @@
 package com.marcinmoskala.ktworkout.presentation
 
-import android.content.*
+import android.app.*
 import android.media.*
-import android.os.*
-import android.speech.tts.*
-import android.util.*
-import com.marcinmoskala.ktworkout.*
-import java.util.*
+import com.mapzen.speakerbox.*
+import com.marcinmoskala.ktworkout.R
 
-class AndroidSpeaker(context: Context): Speaker {
+class AndroidSpeaker(context: Application) : Speaker {
 
-    private val whistle by lazy { MediaPlayer.create(context, R.raw.whistle_blow_cc0) }
-    private val endSound by lazy { MediaPlayer.create(context, R.raw.victory) }
-
-    private var isLoaded = false
-    private val onInitListener = TextToSpeech.OnInitListener { status ->
-        if (status == TextToSpeech.SUCCESS) {
-            mTts.language = Locale.getDefault()
-            isLoaded = true
+    private val whistle by lazy {
+        MediaPlayer.create(context, R.raw.whistle_blow_cc0).apply {
+            setVolume(0.2f, 0.2f)
         }
     }
-    private var mTts: TextToSpeech = TextToSpeech(context, onInitListener)
+    private val endSound by lazy { MediaPlayer.create(context, R.raw.victory) }
+    private var speakerbox: Speakerbox = Speakerbox(context)
 
     override fun speak(text: String) {
-        if (isLoaded) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                mTts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null)
-            } else {
-                @Suppress("DEPRECATION")
-                mTts.speak(text, TextToSpeech.QUEUE_FLUSH, null)
-            }
-        } else
-            Log.e("error", "TTS Not Initialized")
+        speakerbox.play(text)
     }
 
     override fun playWhistle() {
