@@ -3,13 +3,11 @@ package com.marcinmoskala.ktworkout.view
 import android.annotation.*
 import android.content.pm.*
 import android.os.*
-import android.preference.*
 import android.support.v7.app.*
-import android.view.*
 import com.marcinmoskala.ktworkout.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-class WorkoutSelectionActivity: AppCompatActivity() {
+class WorkoutSelectionActivity : AppCompatActivity() {
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +15,9 @@ class WorkoutSelectionActivity: AppCompatActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        exercisesButton.setOnClickListener { startExercises(warmup + exercises + stretch) }
+        exercisesButton.setOnClickListener { startExercises(randomExercises) }
+        coldShowerButton.setOnClickListener { startExercises(coldShowerPlan) }
+        minimalisticExercisesButton.setOnClickListener { startExercises(planMinimumExercises) }
     }
 
     private fun startExercises(exercises: List<Exercise>) {

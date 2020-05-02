@@ -55,10 +55,15 @@
             style="@style/ButtonStyle"
             android:text="Exercises" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/stretchButton"-->
-<!--            style="@style/ButtonStyle"-->
-<!--            android:text="Stretch" />-->
+        <TextView
+            android:id="@+id/coldShowerButton"
+            style="@style/ButtonStyle"
+            android:text="Cold shower" />
+
+        <TextView
+            android:id="@+id/minimalisticExercisesButton"
+            style="@style/ButtonStyle"
+            android:text="Minimalistic" />
 
     </LinearLayout>
 

@@ -21,7 +21,7 @@ class WorkoutViewModelTest {
         val speaker: Speaker = mockk(relaxed = true)
         val vm = WorkoutViewModel(listOf(exercise), timer, speaker)
 
-        vm.onStart() // Now we should be at the break before exercise
+        vm.onResume() // Now we should be at the break before exercise
         assertEquals("Prepare for Name", vm.title.get())
         assertEquals("2", vm.timeDisplay.get())
         assertEquals(0, vm.progressBarPercentage.get())
@@ -100,7 +100,7 @@ class WorkoutViewModelTest {
         val speaker: Speaker = mockk(relaxed = true)
         val vm = WorkoutViewModel(listOf(exercise), timer, speaker)
 
-        vm.onStart()
+        vm.onResume()
         assertEquals("Prepare for Name A", vm.title.get())
 
         vm.onNext()
@@ -131,7 +131,7 @@ class WorkoutViewModelTest {
         val speaker: Speaker = mockk(relaxed = true)
         val vm = WorkoutViewModel(listOf(exercise, exercise2, exercise3, exercise4), timer, speaker)
 
-        vm.onStart()
+        vm.onResume()
         assertEquals("1/4", vm.exercisesCounterDisplay.get())
 
         vm.onNext()
@@ -171,7 +171,7 @@ class WorkoutViewModelTest {
         val speaker: Speaker = mockk(relaxed = true)
         val vm = WorkoutViewModel(listOf(exercise, exercise2), timer, speaker)
 
-        vm.onStart()
+        vm.onResume()
         assertTrue("A" in vm.title.get().orEmpty())
         assertEquals("1/2", vm.exercisesCounterDisplay.get())
 
