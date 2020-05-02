@@ -1,21 +1,7 @@
 package com.marcinmoskala.ktworkout
 
-import android.os.*
 import com.marcinmoskala.ktworkout.presentation.*
-import kotlinx.android.parcel.*
 import kotlin.random.*
-
-@Parcelize
-data class Exercise(
-    val key: String,
-    val imgId: Int,
-    val nameText: String,
-    val sides: List<String>? = null,
-    val time: Int = 30,
-    val prepareTime: Int = 5,
-    val switchSidesTime: Int = 5,
-    val p: Double = 1.0
-) : Parcelable
 
 val warmup = listOf(
     Exercise("jumping_jacks", R.drawable.jumping_jacks, "Jumping jacks"),
@@ -75,25 +61,18 @@ val randomExercises = allExercises
 val planMinimumExercises = allExercises
     .filter { it.p >= 1.0 }
 
-val coldShowerPlan = listOf(
-    Exercise("warm_shower1", R.drawable.shower, "Warm shower", time = 10, prepareTime = 0),
-    Exercise("cold_shower1", R.drawable.shower, "Cold shower", time = 10, prepareTime = 0),
-    Exercise("warm_shower2", R.drawable.shower, "Warm shower", time = 10, prepareTime = 0),
-    Exercise("cold_shower2", R.drawable.shower, "Cold shower", time = 10, prepareTime = 0),
-    Exercise("warm_shower3", R.drawable.shower, "Warm shower", time = 10, prepareTime = 0),
-    Exercise("cold_shower3", R.drawable.shower, "Cold shower", time = 10, prepareTime = 0)
-)
-
 fun main() {
     println("Plan minimum should take " + planMinimumExercises.caculateAverageTime())
     println("All should take on average " + allExercises.caculateAverageTime())
     println("Warmup should take on average " + warmup.caculateAverageTime())
     println("Exercises should take on average " + exercises.caculateAverageTime())
     println("Stretch should take on average " + stretch.caculateAverageTime())
+    println()
+    println("Full workout should take " + fullWorkout.caculateAverageTime())
+
 }
 
 private fun List<Exercise>.caculateAverageTime() = sumByDouble {
     ((it.time * (it.sides?.size ?: 1)) + it.prepareTime + (it.switchSidesTime * ((it.sides?.size
         ?: 1) - 1))) * it.p
-}
-    .toInt().displayTime()
+}.toInt().displayTime()

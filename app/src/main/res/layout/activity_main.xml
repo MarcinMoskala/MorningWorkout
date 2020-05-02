@@ -56,6 +56,11 @@
             android:text="Exercises" />
 
         <TextView
+            android:id="@+id/fullWorkoutButton"
+            style="@style/ButtonStyle"
+            android:text="Full workout" />
+
+        <TextView
             android:id="@+id/coldShowerButton"
             style="@style/ButtonStyle"
             android:text="Cold shower" />

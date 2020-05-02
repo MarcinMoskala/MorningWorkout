@@ -16,6 +16,7 @@ class WorkoutSelectionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
         exercisesButton.setOnClickListener { startExercises(randomExercises) }
+        fullWorkoutButton.setOnClickListener { startExercises(fullWorkout) }
         coldShowerButton.setOnClickListener { startExercises(coldShowerPlan) }
         minimalisticExercisesButton.setOnClickListener { startExercises(planMinimumExercises) }
     }

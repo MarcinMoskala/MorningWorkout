@@ -158,5 +158,5 @@ fun Int.displayTime(): String {
     val sec: Int = this % 60
     val minutesDisplay = minutes.toString().padStart(2, '0')
     val secDisplay = sec.toString().padStart(2, '0')
-    return "$minutesDisplay:$secDisplay"
+    return "$minutesDisplay:$secDisplay minutes"
 }
