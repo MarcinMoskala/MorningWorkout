@@ -9,15 +9,17 @@ val warmup = listOf(
     Exercise("forward_bend", R.drawable.forward_bend, "Dynamic forward bend", time = 20),
     Exercise("rotating_toe_touches", R.drawable.rotating_toe_touches, "Rotating Toe Touches", time = 20),
     Exercise("wrist", R.drawable.wrist_warm_up, "Wrist warm up"),
-    Exercise("prone_thoracic_mobilization", R.drawable.prone_thoracic_mobilization, "Prone Thoracic Mobilization", time = 15, sides = listOf("right", "left"), p = 0.5)
+    Exercise("prone_thoracic_mobilization", R.drawable.prone_thoracic_mobilization, "Prone Thoracic Mobilization", time = 15, sides = listOf("right", "left"), p = 0.4)
 )
 
 val exercises = listOf(
-    Exercise("pull_ups", R.drawable.pull_ups, "Wide Grip Pull Ups", time = 10), // H
+    Exercise("pull_ups_warmup", R.drawable.pull_ups, "Pull Up Warmup", time = 25),
+    Exercise("pull_ups", R.drawable.pull_ups, "Wide Grip Pull Ups", time = 15, prepareTime = 0), // H
     Exercise("hips_rotation", R.drawable.hips_rotation, "Hips rotation", time = 20, switchSidesTime = 0, sides = listOf("clockwise", "counter clockwise")),
     Exercise("leg_rise", R.drawable.leg_rise, "Leg rise", time = 45, prepareTime = 8), // H
     Exercise("superman_hold", R.drawable.superman, "Superman hold", time = 35, prepareTime = 8),
     Exercise("squats", R.drawable.squat, "Squats", time = 50, prepareTime = 8), // M
+    Exercise("push_ups_warmup", R.drawable.push_ups, "Push ups warmup", time = 20),
     Exercise("push_ups", R.drawable.push_ups, "Push ups", time = 35, prepareTime = 8), // H
     Exercise("cat_cow", R.drawable.cat_cow, "Cat-cow pose", time = 35, prepareTime = 8),
     Exercise("handstand", R.drawable.handstand, "Handstand", prepareTime = 10, p = 0.9), // H
@@ -36,17 +38,17 @@ val stretch = listOf(
     Exercise("cobra", R.drawable.cobra_pose, "Cobra Pose"),
     Exercise("back_stretch", R.drawable.back_stretch, "Back Stretch front"),
     Exercise("biceps_and_wrist_stretch", R.drawable.biceps_stretch, "Biceps and Wrist Stretch", prepareTime = 8),
-    Exercise("other_site_wrist_stretch", R.drawable.wrist_stretch_2, "Other site Wrist Stretch"),
+    Exercise("other_site_wrist_stretch", R.drawable.wrist_stretch_2, "Other site Wrist Stretch", p = 0.8),
     Exercise("chest_stretch", R.drawable.chest_stretch, "Chest Stretch", sides = listOf("right", "left"), p = 0.5),
     Exercise("shoulder_streatch", R.drawable.shoulder_stretch, "Shoulder Stretch", sides = listOf("right", "left"), p = 0.6),
     Exercise("triceps_stretch", R.drawable.triceps_stretch, "Triceps Stretch", sides = listOf("right", "left"), p = 0.5),
     Exercise("bear_hug", R.drawable.bear_hug, "Bear Hug", p = 0.4),
-    Exercise("leg_standing_stretch", R.drawable.legstretch, "Leg stretch while standing", sides = listOf("right", "left"), prepareTime = 8, p = 0.5),
-    Exercise("obliques_stretches", R.drawable.obliques_stretches, "Obliques stretches", sides = listOf("right", "left"), prepareTime = 3, p = 0.5),
-    Exercise("lower_back", R.drawable.lowerback, "Lower Back Stretch", sides = listOf("right", "left"), p = 0.5),
-    Exercise("knee_to_chest", R.drawable.knee_to_chest, "Knee to chest", p = 0.5),
-    Exercise("long_adductor_stretch", R.drawable.long_adductor_stretch, "Long Adductor Stretch", p = 0.5),
-    Exercise("standing_hamstring_stretch", R.drawable.standing_hamstring_stretch, "Standing Hamstring Stretch", sides = listOf("right", "left"), p = 0.5),
+    Exercise("leg_standing_stretch", R.drawable.legstretch, "Leg stretch while standing", sides = listOf("right", "left"), prepareTime = 8, p = 0.4),
+    Exercise("obliques_stretches", R.drawable.obliques_stretches, "Obliques stretches", sides = listOf("right", "left"), prepareTime = 3, p = 0.4),
+    Exercise("lower_back", R.drawable.lowerback, "Lower Back Stretch", sides = listOf("right", "left"), p = 0.4),
+    Exercise("knee_to_chest", R.drawable.knee_to_chest, "Knee to chest", p = 0.4),
+    Exercise("long_adductor_stretch", R.drawable.long_adductor_stretch, "Long Adductor Stretch", p = 0.4),
+    Exercise("standing_hamstring_stretch", R.drawable.standing_hamstring_stretch, "Standing Hamstring Stretch", sides = listOf("right", "left"), p = 0.4),
     Exercise("windshield_wipers", R.drawable.windshield_wipers, "Windshield Wipers", sides = listOf("right", "left"), p = 0.6),
     Exercise("upper_trap_stretch", R.drawable.upper_trap_stretch, "Upper Trap Stretch", sides = listOf("right", "left")),
     Exercise("upper_trap_stretch_front", R.drawable.upper_trap_stretch, "Upper Trap Front Stretch", sides = listOf("right", "left"), time = 15, switchSidesTime = 0, p = 0.6),
