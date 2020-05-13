@@ -9,33 +9,35 @@ val warmup = listOf(
     Exercise("forward_bend", R.drawable.forward_bend, "Dynamic forward bend", time = 20),
     Exercise("rotating_toe_touches", R.drawable.rotating_toe_touches, "Rotating Toe Touches", time = 20),
     Exercise("wrist", R.drawable.wrist_warm_up, "Wrist warm up"),
+    Exercise("neck_rotation", R.drawable.neck_rotation, "Neck Rotation"),
+    Exercise("scarecrow_rotation", R.drawable.scarecrow_rotation, "Scarecrow Rotation"),
     Exercise("prone_thoracic_mobilization", R.drawable.prone_thoracic_mobilization, "Prone Thoracic Mobilization", time = 15, sides = listOf("right", "left"), p = 0.4)
 )
 
 val exercises = listOf(
     Exercise("pull_ups_warmup", R.drawable.pull_ups, "Pull Up Warmup", time = 25),
-    Exercise("pull_ups", R.drawable.pull_ups, "Wide Grip Pull Ups", time = 15, prepareTime = 0), // H
+    Exercise("pull_ups", R.drawable.pull_ups, "Wide Grip Pull Ups", time = 20, prepareTime = 0), // H
     Exercise("hips_rotation", R.drawable.hips_rotation, "Hips rotation", time = 20, switchSidesTime = 0, sides = listOf("clockwise", "counter clockwise")),
     Exercise("leg_rise", R.drawable.leg_rise, "Leg rise", time = 45, prepareTime = 8), // H
     Exercise("superman_hold", R.drawable.superman, "Superman hold", time = 35, prepareTime = 8),
     Exercise("squats", R.drawable.squat, "Squats", time = 50, prepareTime = 8), // M
-    Exercise("push_ups_warmup", R.drawable.push_ups, "Push ups warmup", time = 20),
-    Exercise("push_ups", R.drawable.push_ups, "Push ups", time = 35, prepareTime = 8), // H
+    Exercise("push_ups_warmup", R.drawable.push_ups, "Push ups warmup", time = 25),
+    Exercise("push_ups", R.drawable.push_ups, "Push ups", time = 40, prepareTime = 0), // H
     Exercise("cat_cow", R.drawable.cat_cow, "Cat-cow pose", time = 35, prepareTime = 8),
     Exercise("handstand", R.drawable.handstand, "Handstand", prepareTime = 10, p = 0.9), // H
     Exercise("belly_breaths", R.drawable.belly_breaths, "Belly Breaths", time = 10, prepareTime = 8),
     Exercise("stomach_vacuum", R.drawable.stomach_vacuum, "Stomach Vacuum", time = 10, sides = listOf("one", "two", "three")),
     Exercise("bridge", R.drawable.bridge, "Bridge", prepareTime = 12),
-    Exercise("bridge_full", R.drawable.bridge, "Full bridge", prepareTime = 5, time = 10), // H
+    Exercise("bridge_full", R.drawable.bridge, "Full bridge", prepareTime = 5, time = 15), // H
     Exercise("plank", R.drawable.plank, "Plank", prepareTime = 8),
-    Exercise("pull_ups", R.drawable.pull_ups, "Close Grip Pull Ups", time = 10) // H
+    Exercise("pull_ups", R.drawable.pull_ups, "Close Grip Pull Ups", time = 20, prepareTime = 8) // H
 )
 
 val stretch = listOf(
     Exercise("mountain", R.drawable.mountain, "Mountain", time = 20),
-    Exercise("forward_bend", R.drawable.forward_bend, "Forward bend"),
-    Exercise("downward_dog", R.drawable.downward_dog, "Downward-Facing Dog"),
-    Exercise("cobra", R.drawable.cobra_pose, "Cobra Pose"),
+    Exercise("forward_bend", R.drawable.forward_bend, "Forward bend", time = 25),
+    Exercise("downward_dog", R.drawable.downward_dog, "Downward-Facing Dog", time = 25),
+    Exercise("cobra", R.drawable.cobra_pose, "Cobra Pose", time = 20),
     Exercise("back_stretch", R.drawable.back_stretch, "Back Stretch front"),
     Exercise("biceps_and_wrist_stretch", R.drawable.biceps_stretch, "Biceps and Wrist Stretch", prepareTime = 8),
     Exercise("other_site_wrist_stretch", R.drawable.wrist_stretch_2, "Other site Wrist Stretch", p = 0.8),
