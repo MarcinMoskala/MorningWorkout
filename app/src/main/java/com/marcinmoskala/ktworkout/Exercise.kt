@@ -10,7 +10,7 @@ data class Exercise(
     val nameText: String,
     val sides: List<String>? = null,
     val time: Int = 30,
-    val prepareTime: Int = 5,
+    val prepareTime: Int = 0,
     val switchSidesTime: Int = 5,
     val p: Double = 1.0
 ) : Parcelable

@@ -4,11 +4,17 @@ import android.app.*
 import android.media.*
 import com.mapzen.speakerbox.*
 import com.marcinmoskala.ktworkout.R
-import java.lang.IllegalStateException
+import java.util.*
 
 class AndroidSpeaker(val context: Application) : Speaker {
-    private val players = mutableListOf<MediaPlayer>()
+    private var endSound = createEndSound()
+    private var whistle = createWhistle()
+
     private var speakerbox: Speakerbox = Speakerbox(context)
+
+    init {
+        speakerbox.textToSpeech.language = Locale.ENGLISH
+    }
 
     override fun speak(text: String) {
         try {
@@ -20,20 +26,33 @@ class AndroidSpeaker(val context: Application) : Speaker {
     }
 
     override fun playWhistle() {
-        val whistle = MediaPlayer.create(context, R.raw.whistle_blow_cc0).apply {
-            setVolume(0.2f, 0.2f)
+        try {
+            whistle.prepare()
+            whistle.start()
+        } catch (e: IllegalStateException) {
+            whistle = createWhistle()
+            whistle.start()
         }
-        whistle.start()
-        players += whistle
     }
 
     override fun playEndSound() {
-        val endSound by lazy { MediaPlayer.create(context, R.raw.victory) }
-        endSound.start()
-        players += endSound
+        try {
+            endSound.prepare()
+            endSound.start()
+        } catch (e: IllegalStateException) {
+            endSound = createEndSound()
+            endSound.start()
+        }
     }
 
     override fun release() {
-        players.forEach { it.release() }
+        whistle.release()
+        endSound.release()
     }
+
+    private fun createWhistle() = MediaPlayer.create(context, R.raw.whistle_blow_cc0).apply {
+        setVolume(0.2f, 0.2f)
+    }
+
+    private fun createEndSound() = MediaPlayer.create(context, R.raw.victory)
 }
