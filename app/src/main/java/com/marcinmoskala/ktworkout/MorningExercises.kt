@@ -39,29 +39,29 @@ val exercises = listOf(
 )
 
 val stretch = listOf(
-        Exercise("chin_tucks_exercise", R.drawable.chin_tucks_exercise, "Chin Tucks Exercise", time = 30, prepareTime = 5),
-        Exercise("neck_flexion", R.drawable.neck_flexion, "Neck Flexion (Suboccipital Stretch)", time = 30),
-        Exercise("doorway_stretch", R.drawable.doorway_stretch, "Doorway Stretch", time = 30, prepareTime = 5),
+        Exercise("chin_tucks_exercise", R.drawable.chin_tucks_exercise, "Chin Tucks Exercise", time = 30, prepareTime = 5, p = 0.8),
+        Exercise("neck_flexion", R.drawable.neck_flexion, "Neck Flexion (Suboccipital Stretch)", time = 30, p = 0.8),
+        Exercise("doorway_stretch", R.drawable.doorway_stretch, "Doorway Stretch", time = 30, prepareTime = 5, p = 0.8),
         Exercise("shoulder_blade_squeeze", R.drawable.shoulder_blade_squeeze, "Shoulder Blade Squeeze", time = 30, prepareTime = 5, p = 0.5),
-        Exercise("upper_trap_stretch", R.drawable.upper_trap_stretch, "Upper Trap Stretch", sides = listOf("right", "left"), prepareTime = 5),
-        Exercise("mountain", R.drawable.mountain, "Mountain", time = 20, prepareTime = 5),
-        Exercise("forward_bend", R.drawable.forward_bend, "Forward bend", time = 20),
-        Exercise("downward_dog", R.drawable.downward_dog, "Downward-Facing Dog", time = 25),
-        Exercise("cobra", R.drawable.cobra_pose, "Cobra Pose", time = 20, p = 0.6),
-        Exercise("back_stretch", R.drawable.back_stretch, "Back Stretch front", p = 0.6),
-        Exercise("biceps_and_wrist_stretch", R.drawable.biceps_stretch, "Biceps and Wrist Stretch"),
+        Exercise("upper_trap_stretch", R.drawable.upper_trap_stretch, "Upper Trap Stretch", sides = listOf("right", "left"), prepareTime = 5, p = 0.8),
+        Exercise("mountain", R.drawable.mountain, "Mountain", time = 20, prepareTime = 5, p = 0.8),
+        Exercise("forward_bend", R.drawable.forward_bend, "Forward bend", time = 20, p = 0.8),
+        Exercise("downward_dog", R.drawable.downward_dog, "Downward-Facing Dog", time = 25, p = 0.8),
+        Exercise("cobra", R.drawable.cobra_pose, "Cobra Pose", time = 20, p = 0.5),
+        Exercise("back_stretch", R.drawable.back_stretch, "Back Stretch front", p = 0.5),
+        Exercise("biceps_and_wrist_stretch", R.drawable.biceps_stretch, "Biceps and Wrist Stretch", p = 0.8),
         Exercise("other_site_wrist_stretch", R.drawable.wrist_stretch_2, "Other site Wrist Stretch", p = 0.8),
-        Exercise("chest_stretch", R.drawable.chest_stretch, "Chest Stretch", sides = listOf("right", "left"), p = 0.5, prepareTime = 3),
-        Exercise("shoulder_streatch", R.drawable.shoulder_stretch, "Shoulder Stretch", sides = listOf("right", "left"), p = 0.6, prepareTime = 3),
-        Exercise("triceps_stretch", R.drawable.triceps_stretch, "Triceps Stretch", sides = listOf("right", "left"), p = 0.5, prepareTime = 3),
-        Exercise("bear_hug", R.drawable.bear_hug, "Bear Hug", p = 0.4, prepareTime = 3),
-//    Exercise("leg_standing_stretch", R.drawable.legstretch, "Leg stretch while standing", sides = listOf("right", "left"), prepareTime = 8, p = 0.4),
-//    Exercise("obliques_stretches", R.drawable.obliques_stretches, "Obliques stretches", sides = listOf("right", "left"), prepareTime = 3, p = 0.4),
-//    Exercise("lower_back", R.drawable.lowerback, "Lower Back Stretch", sides = listOf("right", "left"), p = 0.4),
-//    Exercise("knee_to_chest", R.drawable.knee_to_chest, "Knee to chest", p = 0.4),
-        Exercise("long_adductor_stretch", R.drawable.long_adductor_stretch, "Long Adductor Stretch", p = 0.6, prepareTime = 5),
-//    Exercise("standing_hamstring_stretch", R.drawable.standing_hamstring_stretch, "Standing Hamstring Stretch", sides = listOf("right", "left"), p = 0.4),
-        Exercise("windshield_wipers", R.drawable.windshield_wipers, "Windshield Wipers", sides = listOf("right", "left"), p = 0.6, prepareTime = 5),
+        Exercise("chest_stretch", R.drawable.chest_stretch, "Chest Stretch", sides = listOf("right", "left"), p = 0.4, prepareTime = 3),
+        Exercise("shoulder_streatch", R.drawable.shoulder_stretch, "Shoulder Stretch", sides = listOf("right", "left"), p = 0.5, prepareTime = 3),
+        Exercise("triceps_stretch", R.drawable.triceps_stretch, "Triceps Stretch", sides = listOf("right", "left"), p = 0.4, prepareTime = 3),
+        Exercise("bear_hug", R.drawable.bear_hug, "Bear Hug", p = 0.3, prepareTime = 3),
+        Exercise("leg_standing_stretch", R.drawable.legstretch, "Leg stretch while standing", sides = listOf("right", "left"), prepareTime = 8, p = 0.3),
+        Exercise("obliques_stretches", R.drawable.obliques_stretches, "Obliques stretches", sides = listOf("right", "left"), prepareTime = 3, p = 0.3),
+        Exercise("lower_back", R.drawable.lowerback, "Lower Back Stretch", sides = listOf("right", "left"), p = 0.1),
+        Exercise("knee_to_chest", R.drawable.knee_to_chest, "Knee to chest", p = 0.1),
+        Exercise("long_adductor_stretch", R.drawable.long_adductor_stretch, "Long Adductor Stretch", p = 0.5, prepareTime = 5),
+        Exercise("standing_hamstring_stretch", R.drawable.standing_hamstring_stretch, "Standing Hamstring Stretch", sides = listOf("right", "left"), p = 0.3),
+        Exercise("windshield_wipers", R.drawable.windshield_wipers, "Windshield Wipers", sides = listOf("right", "left"), p = 0.4, prepareTime = 5),
         Exercise("upper_trap_stretch_front", R.drawable.upper_trap_stretch, "Upper Trap Front Stretch", sides = listOf("right", "left"), time = 15, switchSidesTime = 0, p = 0.3),
         Exercise("upper_trap_stretch_back", R.drawable.upper_trap_stretch, "Upper Trap Back Stretch", sides = listOf("right", "left"), time = 15, switchSidesTime = 0, p = 0.3)
 )
@@ -86,6 +86,9 @@ fun main() {
 }
 
 private fun List<Exercise>.caculateAverageTime() = sumByDouble {
-    ((it.time * (it.sides?.size ?: 1)) + it.prepareTime + (it.switchSidesTime * ((it.sides?.size
-            ?: 1) - 1))) * it.p
+    (
+            (it.time * (it.sides?.size ?: 1)) +
+            it.prepareTime +
+            (it.switchSidesTime * ((it.sides?.size ?: 1) - 1))
+    ) * it.p
 }.toInt().displayTime()
